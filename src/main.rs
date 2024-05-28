@@ -48,8 +48,8 @@ fn main() {
     );
 
     // Capture frame
-    let mut capturer =
-        Capturer::new(*selected_display).expect("Unable to start capturing Display.");
+    let display = Display::primary().unwrap();
+    let mut capturer = Capturer::new(display).expect("Unable to start capturing Display.");
 
     let frame = capturer.frame().unwrap();
 
