@@ -1,4 +1,7 @@
-use std::io::{stdin, stdout, Write};
+use std::{
+    io::{stdin, stdout, Write},
+    time::Duration,
+};
 
 use scrap::{Capturer, Display, TraitCapturer};
 
@@ -46,8 +49,8 @@ fn main() {
     );
 
     // Capture frame
-    let mut capturer =
-        Capturer::new(*selected_display).expect("Unable to start capturing Display.");
+    let d = Display::primary().unwrap();
+    let mut capturer = Capturer::new(d).expect("Unable to start capturing Display.");
 
-    let frame = capturer.frame().unwrap();
+    let frame = capturer.frame(Duration::from_nanos(100)).unwrap();
 }
