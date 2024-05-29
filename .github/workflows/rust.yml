@@ -17,8 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install dependencies
-      run: sudo apt-get install nasm
-      run: vcpkg install libvpx libyuv opus aom
+      run: sudo apt-get install nasm && vcpkg install libvpx libyuv opus aom
     - name: Build
       run: cargo build --verbose
     - name: Run tests
