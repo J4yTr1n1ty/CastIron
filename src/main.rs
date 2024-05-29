@@ -1,8 +1,6 @@
-extern crate scrap;
-
 use std::io::{stdin, stdout, Write};
 
-use scrap::{Capturer, Display};
+use scrap::{Capturer, Display, TraitCapturer};
 
 fn main() {
     let displays = Display::all().expect("This application only works with a Display connected and a X11 or Wayland installation on Linux.");
@@ -48,12 +46,8 @@ fn main() {
     );
 
     // Capture frame
-    let display = Display::primary().unwrap();
-    let mut capturer = Capturer::new(display).expect("Unable to start capturing Display.");
+    let mut capturer =
+        Capturer::new(*selected_display).expect("Unable to start capturing Display.");
 
     let frame = capturer.frame().unwrap();
-
-    let frame_vec = frame.to_vec();
-
-    println!("Frame Data: {:02X?}", frame_vec);
 }

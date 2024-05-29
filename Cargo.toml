@@ -6,6 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-scrap = "0.5.0"
-# scrap = { path = "libs/scrap", features = ["wayland"] }
-# hbb_common = { path = "libs/hbb_common" }
+# scrap = "0.5.0"
+scrap = { path = "libs/scrap", features = ["wayland"] }
+hbb_common = { path = "libs/hbb_common" }
